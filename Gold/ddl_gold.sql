@@ -1,18 +1,39 @@
 /*
-========================================================================================================
-DDL Script: Create Gold Views
-========================================================================================================
-Script Purpose:
-    This script creates views for the Gold layer in the data warehouse. 
-    The Gold layer represents the final dimension and fact tables (Star Schema)
+=================================================================================================================
+Script Name   : ddl_gold_views.sql
+Layer         : Gold
+Object Type   : Views (Dimension and Fact Views)
+Purpose       : Create business-ready analytical views from the Silver layer
 
-    Each view performs transformations and combines data from the Silver layer 
-    to produce a clean, enriched, and business-ready dataset.
+Description:
+    This script creates Gold layer views representing the final analytical data model
+    using a Star Schema design.
 
-Usage:
-    - These views can be queried directly for analytics and reporting.
-========================================================================================================  
+    The Gold layer provides clean, enriched, and business-ready datasets optimized
+    for reporting, dashboards, and analytics.
+
+    These views include:
+        - Dimension views (dim_customer, dim_products)
+        - Fact views (fact_sales)
+
+    The views integrate and transform data from multiple Silver layer tables
+    to provide a unified and analytics-ready structure.
+
+Source        : silver schema tables
+Target        : gold schema views
+
+Data Model    : Star Schema
+
+Usage Example :
+    SELECT * FROM gold.dim_customer;
+    SELECT * FROM gold.dim_products;
+    SELECT * FROM gold.fact_sales;
+
+Author        : Ponraj K
+Created Date  : 2026
+=================================================================================================================
 */
+
 
 -- ======================================================================================================
 -- Create Dimension: gold.dim_customer
