@@ -1,13 +1,25 @@
 /*
 =======================================================================================================================
-DDL Scripts: Create Silver Tables
+Script Name   : ddl_silver.sql
+Layer         : Silver
+Purpose       : Create Silver layer tables
+
+Description:
+    This script creates tables in the 'silver' schema.
+    Existing tables will be dropped and recreated to ensure the latest structure.
+
+    The Silver layer stores cleaned, standardized, and transformed data
+    from the Bronze layer. This layer improves data quality and prepares
+    data for business-level transformations in the Gold layer.
+
+Source        : bronze schema tables
+Target        : silver schema tables
+
+Author        : Ponraj K
+Created Date  : 2026
 =======================================================================================================================
-Scripts Purpose:
-    This scripts create tables in the 'silver' schema, dropping existing tables
-    if they already exist.
-    Run this scripts to re-defined the DDL structure of 'bronze' table
-======================================================================================================================
 */
+
 
 IF OBJECT_ID ('silver.crm_cust_info' , 'U ') IS NOT NULL
 	DROP TABLE silver.crm_cust_info ;
