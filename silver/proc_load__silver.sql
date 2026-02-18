@@ -1,22 +1,38 @@
 /*
 =================================================================================================================
-Stored Procedure: Load Silver Layer (Bronze -> Silver)
-=================================================================================================================
-Script Purpose:
-    This stored procedure performs the ETL (Extract, Transform, Load) process to 
-    populate the 'silver' schema tables from the 'bronze' schema.
-  Actions Performed:
-    -  Truncates Silver tables.
-    -  Inserts transformed and cleansed data from Bronze into Silver tables.
+Script Name   : proc_load_silver.sql
+Stored Proc   : silver.load_silver
+Layer         : Silver
+Purpose       : Load and transform data from Bronze layer into Silver layer
 
-Parameters:
-    None.
-    This stored procedure does not accept any parameters or return any values.
+Description:
+    This stored procedure performs the ETL (Extract, Transform, Load) process
+    to populate the Silver layer tables from the Bronze layer.
 
-Usage Example:
-    EXEC Silver.load_silver;
+    The Silver layer applies data cleansing, standardization, and transformation
+    to improve data quality and prepare it for business-level analytics in the Gold layer.
+
+Actions Performed:
+    - Truncates existing Silver tables
+    - Cleans and standardizes data
+    - Removes duplicates using ROW_NUMBER()
+    - Applies business transformation rules
+    - Loads transformed data into Silver tables
+
+Source        : bronze schema tables
+Target        : silver schema tables
+
+Parameters    : None
+Returns       : None
+
+Usage Example :
+    EXEC silver.load_silver;
+
+Author        : Ponraj K
+Created Date  : 2026
 =================================================================================================================
 */
+
 
 CREATE OR ALTER PROCEDURE silver.load_silver as
 BEGIN
